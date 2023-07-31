@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <!-- cria a coluna ativo na tabela medicos -->
+    <changeSet author="kleber" id="8">
+        <addColumn tableName="medicos">
+            <column name="ativo" type="boolean" defaultValue="true"/>
+        </addColumn>
+    </changeSet>
+
+    <!-- atualiza a coluna ativo na tabela medicos para os valores cadastrados -->
+    <changeSet author="kleber" id="9">
+        <update tableName="medicos">
+            <column name="ativo" value="true"/>
+            <where>ativo is null</where>
+        </update>
+    </changeSet>
+
+
+
+</databaseChangeLog>
